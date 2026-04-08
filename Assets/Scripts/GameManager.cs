@@ -15,7 +15,10 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        instance = this;
+        if(instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
     }
 
     void Update()
@@ -34,6 +37,7 @@ public class GameManager : MonoBehaviour
         if (money <= 0 || hp <= 0)
         {
             Debug.Log("Game Over!");
+            return;
             Time.timeScale = 0f;
         }
     }
@@ -48,6 +52,7 @@ public class GameManager : MonoBehaviour
     {
         score -= 10;
         money -= 10;
+        Debug.Log("Money sekarang: " + money);
     }
 
     public void TakeDamage()
