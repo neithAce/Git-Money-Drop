@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4553470508307867863}
   - component: {fileID: 4430019776457710584}
   - component: {fileID: 5033506536731311418}
+  - component: {fileID: 5978362412993033985}
   m_Layer: 0
   m_Name: Money
   m_TagString: Untagged
@@ -28,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 6570931395419982342}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.8612, y: 4.1319, z: 0}
-  m_LocalScale: {x: 0.6375, y: 0.6162, z: 1}
+  m_LocalPosition: {x: -2.3992, y: 3.6882, z: 0}
+  m_LocalScale: {x: 1.5615562, y: 1.5036513, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -4986890610287934012, guid: 274d64617113287499ed1c4165d1d8f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -150,3 +151,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74aecc781e58de04493e84b3e65d4c6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Money
+  coinSound: {fileID: 8300000, guid: 4810b5971951446d2ba39f367a2dc2d6, type: 3}
+--- !u!95 &5978362412993033985
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6570931395419982342}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 54a7e19cb60dd3e409e0646b0ee32eeb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

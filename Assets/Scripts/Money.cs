@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Money : MonoBehaviour
 {
+    public AudioClip coinSound;
+
     void Update()
     {
         transform.Translate(Vector2.down * GameManager.instance.itemFallSpeed * Time.deltaTime);
@@ -11,6 +13,7 @@ public class Money : MonoBehaviour
     {
         if (other.CompareTag("Player") && GameManager.instance != null)
         {
+            AudioSource.PlayClipAtPoint(coinSound, transform.position);
             GameManager.instance.AddMoney();
             Destroy(gameObject);
         }

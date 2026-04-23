@@ -4,6 +4,7 @@ public class Spawner : MonoBehaviour
 {
     public GameObject moneyPrefab;
     public GameObject debtPrefab;
+    public GameObject enemyPrefab;
     public float spawnInterval = 2f;
     private float timer;
 
@@ -26,9 +27,13 @@ public class Spawner : MonoBehaviour
         {
             Instantiate(moneyPrefab, spawnPosition, Quaternion.identity);
         }
-        else
+        else if(randomValue < 85)
         {
             Instantiate(debtPrefab, spawnPosition, Quaternion.identity);
+        }
+        else
+        {
+            Instantiate(enemyPrefab, new Vector3(0f, -2f, 0f), Quaternion.identity);
         }
     }
 }

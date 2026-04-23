@@ -36,9 +36,13 @@ public class GameManager : MonoBehaviour
         }
         if (money <= 0 || hp <= 0)
         {
-            Debug.Log("Game Over!");
-            return;
-            Time.timeScale = 0f;
+            SaveHighScore();
+            ReturnToMenu();
+        }
+
+        if (SaveLoadManager.instance != null)
+        {
+            SaveLoadManager.instance.SaveGame();
         }
     }
 
@@ -58,5 +62,25 @@ public class GameManager : MonoBehaviour
     public void TakeDamage()
     {
         hp -= 25;
+    }
+
+    void SaveHighScore()
+    {
+        int highScore = PlayerPrefs.GetInt("HighScore", 0);
+        if (score > highScore)
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+            PlayerPrefs.Save();
+        }
+    }
+
+    void ReturnToMenu()
+    {
+        Time.timeScale = 0f;
+        MenuManager menu = FindObjectOfType<MenuManager>();
+        if (menu != null)
+        {
+            menu.ShowMenu();
+        }
     }
 }
