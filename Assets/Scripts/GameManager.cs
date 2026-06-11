@@ -11,7 +11,10 @@ public class GameManager : MonoBehaviour
     public int hp = 100;
     public float itemFallSpeed = 3f;
     public float enemySpeed = 2f;
+    private float baseItemSpeed;
+    private float baseEnemySpeed;
     private float gameTime = 0f;
+    public int speedLevel = 1;
     private bool isInvincible = false;
     private bool itemIncreased = false;
     private bool enemyIncreased = false;
@@ -24,19 +27,24 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
     }
 
+    void Start()
+    {
+        baseItemSpeed = itemFallSpeed;
+        baseEnemySpeed = enemySpeed;
+    }
+
     void Update()
     {
         gameTime += Time.deltaTime;
-        if (gameTime >= 30f && !itemIncreased)
+        int newLevel = Mathf.Min(Mathf.FloorToInt(gameTime / 30f) + 1, 4);
+        if(newLevel != speedLevel)
         {
-            itemFallSpeed += 2f;
-            itemIncreased = true;
+            speedLevel = newLevel;
+            itemFallSpeed = baseItemSpeed * speedLevel;
+            enemySpeed = baseEnemySpeed * speedLevel;
+            Debug.Log("Speed Level: " + speedLevel);
         }
-        if (gameTime >= 30f && !enemyIncreased)
-        {
-            enemySpeed += 2f;
-            enemyIncreased = true;
-        }
+
         if (money <= 0 || hp <= 0)
         {
             SaveHighScore();

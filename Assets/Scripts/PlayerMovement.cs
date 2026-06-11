@@ -8,6 +8,9 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
 
+    public float leftLimit = -6f;
+    public float rightLimit = 6f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -22,6 +25,9 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
+
+        Vector3 pos = transform.position;
+        pos.x = Mathf.Clamp(pos.x, leftLimit, rightLimit);
     }
 
     void OnCollisionEnter2D(Collision2D collision)

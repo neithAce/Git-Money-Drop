@@ -2,12 +2,15 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float speed = 3f;
     private int direction;
+    private Rigidbody2D rb;
 
     void Start()
     {
-        float spawnY = -3.5f;
+        rb = GetComponent<Rigidbody2D>();
+
+        float[] lanes = { -3.5f, 0.6f};
+        float spawnY = lanes[Random.Range(0, lanes.Length)];
 
         if (Random.value < 0.5f)
         {
@@ -23,8 +26,13 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector2.right * direction * speed * Time.deltaTime);
+        rb.linearVelocity = new Vector2(direction * GameManager.instance.enemySpeed, rb.linearVelocity.y);
         if (Mathf.Abs(transform.position.x) > 11f)
+        {
+            Destroy(gameObject);
+        }
+
+        if(transform.position.y < -10f)
         {
             Destroy(gameObject);
         }
