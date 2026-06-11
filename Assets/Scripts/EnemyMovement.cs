@@ -7,7 +7,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Start()
     {
-        float spawnY = -4f;
+        float spawnY = -3.5f;
 
         if (Random.value < 0.5f)
         {
