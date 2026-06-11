@@ -34,6 +34,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            Debug.Log("Enemy collided with player!");
             GameManager.instance.TakeDamage();
             Destroy(gameObject);
         }

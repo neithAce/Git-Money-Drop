@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
+    public static bool isStartingNewGame = false;
+
     public GameObject mainMenuPanel;
     public GameObject gameUIPanel;
     public GameObject continueButton;
@@ -16,14 +19,27 @@ public class MenuManager : MonoBehaviour
         if(PlayerPrefs.GetInt("HasSave", 0) == 0)
             continueButton.SetActive(false);
 
-        Time.timeScale = 0f;
+        if (isStartingNewGame)
+        {
+            isStartingNewGame = false;
+            mainMenuPanel.SetActive(false);
+            gameUIPanel.SetActive(true);
+
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            Time.timeScale = 0f;
+        }
     }
 
     public void PlayGame()
     {
-        mainMenuPanel.SetActive(false);
-        gameUIPanel.SetActive(true);
+        Debug.Log("Play Game button clicked");
+        isStartingNewGame = true;
         Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
     }
 
     public void ShowMenu()
@@ -36,9 +52,9 @@ public class MenuManager : MonoBehaviour
 
     public void ContinueGame()
     {
+        Time.timeScale = 1f;
+        SaveLoadManager.instance.LoadGame();
         mainMenuPanel.SetActive(false);
         gameUIPanel.SetActive(true);
-        SaveLoadManager.instance.LoadGame();
-        Time.timeScale = 1f;
     }
 }

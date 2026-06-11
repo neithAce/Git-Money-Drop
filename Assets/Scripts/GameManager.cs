@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class GameManager : MonoBehaviour
     public float itemFallSpeed = 3f;
     public float enemySpeed = 2f;
     private float gameTime = 0f;
+    private bool isInvincible = false;
     private bool itemIncreased = false;
     private bool enemyIncreased = false;
 
@@ -61,7 +64,16 @@ public class GameManager : MonoBehaviour
 
     public void TakeDamage()
     {
+        if (isInvincible) return;
         hp -= 25;
+        StartCoroutine(Invincibility());
+    }
+
+    IEnumerator Invincibility()
+    {
+        isInvincible = true;
+        yield return new WaitForSeconds(2f);
+        isInvincible = false;
     }
 
     void SaveHighScore()
@@ -76,11 +88,7 @@ public class GameManager : MonoBehaviour
 
     void ReturnToMenu()
     {
-        Time.timeScale = 0f;
-        MenuManager menu = FindObjectOfType<MenuManager>();
-        if (menu != null)
-        {
-            menu.ShowMenu();
-        }
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
