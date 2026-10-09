@@ -3,6 +3,7 @@ using UnityEngine;
 public class Money : MonoBehaviour
 {
     public AudioClip coinSound;
+    public GameObject PickUpEffect;
 
     void Update()
     {
@@ -14,6 +15,7 @@ public class Money : MonoBehaviour
         if (other.CompareTag("Player") && GameManager.instance != null)
         {
             AudioSource.PlayClipAtPoint(coinSound, transform.position);
+            Instantiate(PickUpEffect, transform.position, Quaternion.identity);
             GameManager.instance.AddMoney();
             Destroy(gameObject);
         }

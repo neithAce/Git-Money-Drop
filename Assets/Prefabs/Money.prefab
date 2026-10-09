@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Money
   coinSound: {fileID: 8300000, guid: 4810b5971951446d2ba39f367a2dc2d6, type: 3}
+  PickUpEffect: {fileID: 6219580044247844579, guid: 82f09089ce29d2848bfcf9e3cb450903, type: 3}
 --- !u!95 &5978362412993033985
 Animator:
   serializedVersion: 7

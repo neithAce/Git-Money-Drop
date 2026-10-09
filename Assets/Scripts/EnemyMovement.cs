@@ -4,6 +4,7 @@ public class EnemyMovement : MonoBehaviour
 {
     private int direction;
     private Rigidbody2D rb;
+    public AudioClip enemyHit;
 
     void Start()
     {
@@ -42,6 +43,11 @@ public class EnemyMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            if (enemyHit != null)
+            {
+                AudioSource.PlayClipAtPoint(enemyHit, transform.position);
+            }
+
             Debug.Log("Enemy collided with player!");
             GameManager.instance.TakeDamage();
             Destroy(gameObject);

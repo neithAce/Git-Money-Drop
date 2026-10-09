@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     private float baseEnemySpeed;
     private float gameTime = 0f;
     public int speedLevel = 1;
+    public CameraShake cameraShake;
     private bool isInvincible = false;
     private bool itemIncreased = false;
     private bool enemyIncreased = false;
@@ -74,6 +75,11 @@ public class GameManager : MonoBehaviour
     {
         if (isInvincible) return;
         hp -= 25;
+        if(cameraShake != null)
+        {
+            cameraShake.ShakeCamera();
+        }
+
         StartCoroutine(Invincibility());
     }
 

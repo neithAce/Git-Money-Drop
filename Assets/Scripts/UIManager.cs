@@ -11,8 +11,8 @@ public class UIManager : MonoBehaviour
     {
         if (GameManager.instance != null)
         {
-            moneyText.text = "Money: " + GameManager.instance.money;
-            healthText.text = "HP: " + GameManager.instance.hp;
+            moneyText.text = "" +  GameManager.instance.money;
+            healthText.text = "" + GameManager.instance.hp;
             difficultyText.text = "Difficulty x" + GameManager.instance.speedLevel;
         }
     }

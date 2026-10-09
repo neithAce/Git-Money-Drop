@@ -179,6 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edac26df93e96fe4193f41f83771cc26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  enemyHit: {fileID: 8300000, guid: eb0b82efb91b2644183883893a5c37a8, type: 3}
 --- !u!95 &1701011564201810964
 Animator:
   serializedVersion: 7

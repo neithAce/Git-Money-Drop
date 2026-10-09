@@ -151,6 +151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a068d1ca2790c4ba1b42b68c7197cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Debt
+  debtSound: {fileID: 8300000, guid: f9fbf8fbf82432642919732deb9785f3, type: 3}
+  DebtPickUpEffect: {fileID: 2256207196939009383, guid: 9e6285b4fd026c5449828f3486f57760, type: 3}
 --- !u!95 &8240459128518490321
 Animator:
   serializedVersion: 7
